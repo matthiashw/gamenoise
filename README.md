@@ -1,4 +1,4 @@
-# gamenoise ingame Music Player
-Build in C# and WPF
+# gamenoise 
+An ingame Music Player build in C# and WPF.
 
-for more information visit [www.gamenoise.de](http://www.gamenoise.de)
+For more information visit [www.gamenoise.de](http://www.gamenoise.de).
