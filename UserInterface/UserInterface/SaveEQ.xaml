@@ -1,0 +1,36 @@
+﻿<!--
+author: Matthias Hillert
+    
+created: 21.11.2008
+    
+general information
+===================
+
+modifictation history
+=====================
+01.12. MHI added close button
+
+    
+-->
+<Window x:Uid="Window_1" x:Class="UserInterface.SaveEQ"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MouseLeftButtonDown="SaveEQ_MouseLeftButtonDown"
+    Title="SaveEQ" Height="100" Width="220" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid Height="60">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1.5*" />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#c5c5c5" Stroke="#9d9d9d" StrokeThickness="2" RadiusX="10" RadiusY="10">
+        </Rectangle>
+        <Label x:Uid="saveEQLabel" Padding="10 0 0 0" x:Name="saveEQLabel" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" FontSize="11" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Name of the Equalizer Setting</Label>
+        <TextBox Localization.Attributes="$Content(Unreadable Unmodifiable)" x:Uid="saveEQName" x:Name="saveEQName" Padding="0" Margin="10 0 4 4" Height="20" Grid.Column="0" Grid.Row="1"></TextBox>
+        <Button x:Uid="saveEQ_buttonSave" VerticalContentAlignment="Center" x:Name="saveEQ_buttonSave" Margin="2 0 8 4" Grid.Column="1" Grid.Row="1" Height="20" Click="saveEQ_buttonSaveClick">save</Button>
+        <Button x:Uid="saveEQ_buttonClose" x:Name="saveEQ_buttonClose" Grid.Column="1" Grid.Row="0" Width="18" Height="18" FontSize="10" Click="saveEQ_buttonCloseClick">X</Button>
+    </Grid>
+</Window>

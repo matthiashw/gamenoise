@@ -1,0 +1,36 @@
+﻿<!--
+author: Matthias Hillert
+    
+created: 21.11.2008
+    
+general information
+===================
+
+modifictation history
+=====================
+01.12. MHI added close button
+
+    
+-->
+<Window x:Uid="Window_1" x:Class="UserInterface.LoadingTitle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MouseLeftButtonDown="LoadingTitle_MouseLeftButtonDown"
+    Title="SaveEQ" Height="105.545" Width="220" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid Height="60">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="124*" />
+            <ColumnDefinition Width="74*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1.5*" />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#c5c5c5" Stroke="#9d9d9d" StrokeThickness="2" RadiusX="10" RadiusY="10" Margin="0,0,0,12">
+        </Rectangle>
+        <Label x:Uid="playlistLoadLabel" Padding="10 0 0 0" x:Name="playlistLoadLabel" Grid.ColumnSpan="2" FontSize="11" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,40,0">Now adding title:</Label>
+        <Button x:Uid="buttonCancel" x:Name="buttonCancel" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Margin="0,3,11,3"  Click="buttonCancel_Click">Cancel</Button>
+        <Button x:Uid="saveEQ_buttonClose" x:Name="saveEQ_buttonClose" Grid.Column="1" Width="18" FontSize="10" Click="saveEQ_buttonCloseClick" HorizontalAlignment="Right" Margin="0,3,11,3">X</Button>
+        <Label Localization.Attributes="$Content(Unreadable Unmodifiable)" x:Uid="nowLoadingTitle" x:Name="nowLoadingTitle" FontSize="11" Grid.RowSpan="2" HorizontalContentAlignment="Left" Margin="0,23.552,40.396,12" Padding="10,0,0,0" VerticalContentAlignment="Center" Grid.ColumnSpan="2">...</Label>
+    </Grid>
+</Window>

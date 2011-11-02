@@ -1,0 +1,21 @@
+﻿<Window x:Uid="Window_1" x:Class="UserInterface.YesNo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MouseLeftButtonDown="YesNo_MouseLeftButtonDown"
+    Title="YesNo" Height="172" Width="208" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid x:Uid="Grid_1" Height="60">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_1" Width="93.627*" />
+            <ColumnDefinition x:Uid="ColumnDefinition_2" Width="92.373*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" Height="17.16*" />
+            <RowDefinition x:Uid="RowDefinition_2" Height="42.84*" />
+        </Grid.RowDefinitions>
+        <Rectangle x:Uid="Rectangle_1" Grid.RowSpan="2" Fill="#c5c5c5" Stroke="#9d9d9d" StrokeThickness="2" RadiusX="10" RadiusY="10" Margin="0,-38,0,0" Grid.ColumnSpan="2">
+        </Rectangle>
+        <Button x:Uid="Yes" x:Name="Yes" Grid.Row="1" Margin="23.634,0,19.089,18" FontSize="11"  Click="buttonYesClick">Yes</Button>
+        <Button x:Uid="No" x:Name="No" FontSize="11" Click="buttonNoClick" Margin="18.18,0,23.634,18" Grid.Row="1" Grid.Column="1">No</Button>
+        <Label x:Uid="DialogLabel" x:Name="DialogLabel" FontSize="11" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" Margin="32,-24,34,0" Padding="10,0,0,0" VerticalContentAlignment="Center" Height="24" VerticalAlignment="Top">Clear Current View?</Label>
+    </Grid>
+</Window>

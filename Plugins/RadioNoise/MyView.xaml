@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="RadioNoise.MyView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Style="{DynamicResource pluginRNstyle_mainWindowWindowDefault}">
+
+    <Grid x:Name="gridWrapper" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource pluginRNGidWrapper}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="1.2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="5" x:Name="rectangle" Style="{DynamicResource pluginRNstyle_rectangle}">
+            <Rectangle.BitmapEffect>
+                <BitmapEffectGroup Children="{DynamicResource defaultBitmapEffect}"/>
+            </Rectangle.BitmapEffect>
+        </Rectangle>
+        
+        <Image Width="33" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10 5 0 0">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="33" UriSource="/RadioNoise;component/images/rn-logo.png"/> 
+            </Image.Source>
+        </Image>
+        
+        <Label Localization.Attributes="$Content(Unreadable Unmodifiable)" Grid.Column="0" Grid.Row="0" x:Name="labelPluginRNName" x:Uid="labelPluginRNName" Style="{DynamicResource pluginRNstyle_labelName}">RadioNoise</Label>
+
+        <Button HorizontalAlignment="Center" Width="20" Height="20" Grid.Column="1" Grid.Row="0" Margin="0 3 0 0" x:Name="buttonPluginRNclose" x:Uid="buttonPluginRNclose" Click="buttonPluginRNclose_Click" Style="{DynamicResource buttonClose}">
+            <Button.Content>Close</Button.Content>
+            <Button.ToolTip>
+                <ToolTip Style="{DynamicResource tooltip}">
+                    <Label x:Uid="RNToolTipButtonClose" Style="{DynamicResource tooltipLabel}">Close Radionoise</Label>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+
+        <!-- add URL -->
+        <Label Grid.Column="0" Grid.Row="1" Margin="2 8 2 2" x:Name="labelPluginRNurl" x:Uid="labelPluginRNurl">Add Stream-URL to playlist</Label>
+        <TextBox Grid.Column="0" Grid.Row="1" Height="18" Margin="5 5 5 3" x:Name="textBoxPluginRNStream" x:Uid="textBoxPluginRNStream" VerticalAlignment="Bottom" Style="{DynamicResource searchBox}" />
+        <Button HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Height="20" Margin="0 0 0 2" x:Name="buttonPluginRNadd" x:Uid="buttonPlay" VerticalAlignment="Bottom" Click="buttonPluginRNadd_Click" Style="{DynamicResource ButtonStyleAdd}">
+            <Button.Content>Add</Button.Content>
+            <Button.ToolTip>
+                <ToolTip Style="{DynamicResource tooltip}">
+                    <Label x:Uid="RNToolTipAddUrl" Style="{DynamicResource tooltipLabel}">Add URL to Playlist</Label>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        
+        <Expander Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Header="gamenoise community feature" Margin="0,0,0,2" Name="expander1" Expanded="expander_Expanded" Collapsed="expander_Collapsed" IsExpanded="False">
+            <Grid x:Name="gridWrapperInside" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource pluginRNGidWrapperInside}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="1.2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                
+                <!-- search list -->
+                <Label Grid.Column="0" Grid.Row="0" Margin="2 8 2 2" x:Name="labelPluginRNsearch" x:Uid="labelPluginRNsearch">Search for station</Label>
+                <TextBox Grid.Column="0" Grid.Row="0" Height="18" Margin="5 5 5 3" x:Name="textBoxSearch" x:Uid="textBoxSearch" VerticalAlignment="Bottom" Style="{DynamicResource searchBox}" />
+                <Button HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Height="20" Margin="0 0 0 2"  x:Name="buttonPluginRNaddSearch" x:Uid="buttonPluginRNaddSearch" VerticalAlignment="Bottom" Style="{DynamicResource buttonSearch}" Click="buttonPluginRNaddSearch_Click">
+                    <Button.Content>Search</Button.Content>
+                    <Button.ToolTip>
+                        <ToolTip Style="{DynamicResource tooltip}">
+                            <Label x:Uid="RNToolTipSearch" Style="{DynamicResource tooltipLabel}">Search for Station in Playlist</Label>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                
+                <TabControl Grid.Row="1" Name="tabControl1" Grid.ColumnSpan="2" Style="{DynamicResource RNTabControlStyle}">
+                    <TabItem Header="All" Style="{DynamicResource RNTabItemStyle}">
+                        <ListView Style="{DynamicResource RNplaylistListView}" ItemContainerStyle="{DynamicResource pluginRN_listViewItem}" Name="listView" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Extended"  MouseDoubleClick="listView_MouseDoubleClick">
+                            <ListView.View>
+                                <GridView x:Name="gv"  VirtualizingStackPanel.IsVirtualizing="True" >
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn x:Uid="GridViewColumn_1" Header="Titel" DisplayMemberBinding="{Binding Title}"  />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabItem>
+                    <TabItem Header="Favorites" Style="{DynamicResource RNTabItemStyle}">
+                        <ListView Style="{DynamicResource RNplaylistListView}" ItemContainerStyle="{DynamicResource pluginRN_listViewItem}" Name="listViewFavorites"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Extended"  MouseDoubleClick="listView_MouseDoubleClick">
+                            <ListView.View>
+                                <GridView x:Name="gvFav"  VirtualizingStackPanel.IsVirtualizing="True" >
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                    <GridViewColumn x:Uid="GridViewColumn_1" Header="Titel" DisplayMemberBinding="{Binding Title}"  />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabItem>
+                </TabControl>
+
+
+                <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="10 0 0 0" Height="20" x:Name="buttonPluginRNPlay" x:Uid="buttonPluginRNPlay" Click="buttonPluginRNPlay_Click" Style="{DynamicResource ButtonRNPlay}">
+                    <Button.Content>Play</Button.Content>
+                    <Button.ToolTip>
+                        <ToolTip Style="{DynamicResource tooltip}">
+                            <Label x:Uid="RNToolTipButtonPlayPause" Style="{DynamicResource tooltipLabel}">Play/Pause Stream</Label>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="40 0 0 0" Height="20" x:Name="buttonPluginRNStop" x:Uid="buttonPluginRNStop" Click="buttonPluginRNStop_Click" Style="{DynamicResource buttonRNStop}">
+                    <Button.Content>Stop</Button.Content>
+                    <Button.ToolTip>
+                        <ToolTip Style="{DynamicResource tooltip}">
+                            <Label x:Uid="RNToolTipButtonStop" Style="{DynamicResource tooltipLabel}">Stop Stream</Label>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="90 0 0 0" x:Name="buttonPluginRNclearSearch" x:Uid="buttonPluginRNclearSearch" Height="20" Style="{DynamicResource buttonRNClear}" Click="buttonPluginRNclearSearch_Click">
+                    <Button.Content>Clear</Button.Content>
+                    <Button.ToolTip>
+                        <ToolTip Style="{DynamicResource tooltip}">
+                            <Label x:Uid="RNToolTipButtonClear" Style="{DynamicResource tooltipLabel}">Clear Playlist</Label>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="120 0 0 0" Height="20" x:Name="buttonPluginRNloadStreams" Click="buttonPluginRNloadStreams_Click" x:Uid="buttonPluginRNloadStreams" Style="{DynamicResource buttonRNsynch}">
+                    <Button.Content>Sync</Button.Content>
+                    <Button.ToolTip>
+                        <ToolTip Style="{DynamicResource tooltip}">
+                            <Label x:Uid="RNToolTipButtonSync" Style="{DynamicResource tooltipLabel}">Synchronise with gamenoise.de</Label>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Label Visibility="Hidden" x:Uid="RadioNoiseLabelConnected" x:Name="RadioNoiseLabelConnected" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="150 0 0 0" VerticalAlignment="Center">Not Connected</Label>
+            </Grid>                
+       </Expander>
+    </Grid>
+</UserControl>

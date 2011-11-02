@@ -1,0 +1,35 @@
+﻿<!--
+author: Andreas Knöpfle
+    
+created: 30.11.2008
+    
+general information
+===================
+
+modifictation history
+=====================
+
+    
+-->
+<Window x:Uid="Window_1" x:Class="UserInterface.Error"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MouseLeftButtonDown="Error_MouseLeftButtonDown"
+    Title="SaveEQ" Height="150" Width="200" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="#c5c5c5" Stroke="#9d9d9d" StrokeThickness="2" RadiusX="10" RadiusY="10" Margin="0,0,0,0">
+        </Rectangle>
+        <Label x:Uid="errorLabel" Padding="0" x:Name="errorLabel" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="14">Error Occured</Label>
+        <TextBlock Localization.Attributes="$Content(Unreadable Unmodifiable)" x:Uid="errorText" x:Name="errorText" Grid.ColumnSpan="2" Margin="10,0,10,30" Grid.RowSpan="2" Focusable="False" Background="White" Grid.Row="1" TextTrimming="None" TextWrapping="Wrap">Error Text</TextBlock>
+        <Button x:Uid="Error_OK_Button" VerticalContentAlignment="Center" x:Name="Error_OK_Button" Margin="10,0,10,5" Grid.Column="1" Grid.Row="2" Height="20" Click="Error_OK" VerticalAlignment="Bottom">OK</Button>
+    </Grid>
+</Window>
